@@ -23,24 +23,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    // Added suppressHydrationWarning here to prevent extension crashes
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning 
     >
       <body className="min-h-full flex flex-col">
+        {/* Header */}
         <div className="border p-4">Global Header </div>
 
-      {children}</body>
+        {/* Content */}
+        <main className="flex-1">{children}</main>
+
+        {/* Footer (Moved INSIDE the body tag) */}
         <div className="border p-4">Global Footer </div>
+      </body> 
     </html>
   );
 }
-
-
-
-
-
-
-
-
-
