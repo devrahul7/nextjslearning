@@ -1,7 +1,13 @@
+
+import LoginForm from "./_components/LoginForm";
+
 export default function Page() {
     return (
 
-        
-        <div></div>
+
+        <div>Mero Login Form 
+            <LoginForm/>
+            Server Side Page
+        </div>
     );
 }
