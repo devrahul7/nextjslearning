@@ -1,12 +1,10 @@
-//naparam use garne 
-
 export default async function Page({
     params
 }: {
-    params: Promise<{  id: string }>;  //here param gets repplaced by folders name
+    params: Promise<{ id: string }>;
 }) {
     const { id } = await params;
     return (
-        <div>My Blogs : {id}</div>
+        <div>Mero Blog: {id}</div>
     );
 }

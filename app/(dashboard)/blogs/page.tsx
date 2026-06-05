@@ -1,5 +1,5 @@
-export default function DashboardBlog() {
+export default function Page() {
     return (
-        <div>This is Dashboard Blogs Page</div>
+        <div>Mero Blogs Page</div>
     );
 }

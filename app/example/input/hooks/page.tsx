@@ -1,20 +1,16 @@
-"use client"; // state/hooks
-import { useState, ChangeEvent } from "react";
-export default function InputPage() {
-    const [ email, setEmail ] = useState("");
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setEmail(e.target.value);
-    }
-    const handleSubmit = () => {
-        alert(`Email submitted: ${email}`);
-    }
+"use client"; // client-side
+import useLoginForm from "./useLoginForm";
+export default function HookPage() {
+    const { email, handleEmailChange, handleSubmit } = useLoginForm();
+    // const hook = useLoginForm();
+    // hook.email, hook.handleEmailChange, hook.handleSubmit
     return (
         <div>
-            <p>Email: {email}</p>
+            <h1>Login Form</h1>
             <input 
                 type="email"
                 value={email}
-                onChange={handleChange}
+                onChange={handleEmailChange}
                 className="border p-2 rounded"
             />
             <button onClick={handleSubmit}>Submit</button>

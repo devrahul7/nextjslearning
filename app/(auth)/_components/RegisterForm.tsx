@@ -5,7 +5,7 @@ import { registerSchema, RegisterFormData } from "@/app/(auth)/_components/schem
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { handleRegisterUser } from "@/app/lib/actions/auth-actions";
+import { handleRegisterUser } from "@/lib/actions/auth-action";
 
 export default function RegisterForm() {
     const [isPending, startTransition] = useTransition();
@@ -20,23 +20,25 @@ export default function RegisterForm() {
         resolver: zodResolver(registerSchema),
     });
 
- const onSubmit = (data: RegisterFormData) => {
-    setError("");
-
-    startTransition(async () => {
-        try {
-            const result = await handleRegisterUser(data);
-
-            if (result.success) {
-                router.push("/login");
-            } else {
-                setError(result.message || "Registration failed");
+    const onSubmit = (data: RegisterFormData) => {
+        // isPending is true during the transition, 
+        // and false after it finishes
+        setError('');
+        startTransition(
+            async () => {
+                try {
+                    const result = await handleRegisterUser(data);
+                    if (result.success) {
+                        router.push("/login");
+                    }else{
+                        setError(result.message || 'Registration failed');
+                    }
+                } catch (error: any) {
+                    setError(error?.message || 'Registration failed');
+                }
             }
-        } catch (error: any) {
-            setError(error?.message || "Registration failed");
-        }
-    });
-};
+        );
+    }
     return (
         <div className="max-w-md mx-auto p-4">
             <form onSubmit={handleSubmit(onSubmit)}>

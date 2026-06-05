@@ -2,7 +2,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { LoginFormData, loginSchema } from "./schema";
+import { loginSchema, LoginFormData } from "./schema";
 
 export default function LoginForm() {
     const { 

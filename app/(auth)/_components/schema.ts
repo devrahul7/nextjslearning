@@ -1,5 +1,3 @@
-
-
 // app/(auth)/_components/schema.ts
 import { z } from "zod";
 
